@@ -1,0 +1,60 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  }
+
+  html {
+    font-family: var(--font-sans);
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #f4f3ef;
+    color: #1c1d22;
+    transition: background-color 180ms cubic-bezier(0.16, 1, 0.3, 1),
+      color 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  html.dark body {
+    background-color: #1c1e24;
+    color: #e4e6eb;
+  }
+}
+
+.font-mono-typing {
+  font-family: var(--font-mono);
+  font-variant-ligatures: none;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+@keyframes caret-blink {
+  0%, 48% {
+    opacity: 1;
+  }
+  50%, 98% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.caret-idle {
+  animation: caret-blink 1.05s infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .caret-smooth {
+    transition: none !important;
+  }
+  .caret-idle {
+    animation: none !important;
+  }
+}
